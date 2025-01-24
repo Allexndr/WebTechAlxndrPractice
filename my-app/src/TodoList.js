@@ -1,18 +1,13 @@
 import React from 'react';
-import './TodoList.css';
 
 const TodoList = () => {
+    const items = ['Install React', 'Study React', 'Use React', 'Build React App'];
     return (
-        <div>
-            <h1>My Todo List</h1>
-            <input placeholder="search" />
-            <ul>
-                <li>Install React</li>
-                <li>Study React</li>
-                <li>Use React</li>
-                <li>Build React App</li>
-            </ul>
-        </div>
+        <ul>
+            {items.map((item, index) => (
+                <li key={index}>{item}</li>
+            ))}
+        </ul>
     );
 };
 
