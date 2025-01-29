@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-function App() {
-  return (
-      <div>
-        <h1>Welcome to the Todo App</h1>
-      </div>
-=======
 import logo from './logo.svg';
 import './App.css';
 
@@ -26,7 +19,6 @@ function App() {
         </a>
       </header>
     </div>
->>>>>>> f24a233 (Git)
   );
 }
 
