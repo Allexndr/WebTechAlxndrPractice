@@ -1,16 +1,9 @@
-import AppHeader from './components/AppHeader';
-import SearchPanel from './components/SearchPanel';
-import TodoList from './components/TodoList';
-
-
 function App() {
-    return (
-        <div>
-            <AppHeader />
-            <SearchPanel />
-            <TodoList />
-        </div>
-    );
+  return (
+      <div>
+        <h1>Welcome to the Todo App</h1>
+      </div>
+  );
 }
 
 export default App;
