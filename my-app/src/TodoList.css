@@ -1,23 +1,39 @@
+/* ✅ Заголовок */
 h1 {
     text-align: center;
     color: #4CAF50;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
+/* ✅ Поле ввода */
 input {
     display: block;
     margin: 20px auto;
     padding: 10px;
     width: 80%;
     font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-ul {
+/* ✅ Стилизация списка */
+ul.todo-list {
     list-style-type: none;
     padding: 0;
     text-align: center;
 }
 
-li {
-    padding: 5px 0;
+/* ✅ Стилизация элементов списка */
+.todo-list .list-group-item {
+    padding: 10px 15px;
     font-size: 18px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+/* ✅ Эффект при наведении */
+.todo-list .list-group-item:hover {
+    background: #f1f1f1;
+    cursor: pointer;
 }
