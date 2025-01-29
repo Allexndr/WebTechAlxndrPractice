@@ -1,7 +1,7 @@
-import React from 'react';
-import AppHeader from './AppHeader';
-import SearchPanel from './SearchPanel';
-import TodoList from './TodoList';
+import AppHeader from './components/AppHeader';
+import SearchPanel from './components/SearchPanel';
+import TodoList from './components/TodoList';
+
 
 function App() {
     return (
