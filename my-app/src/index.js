@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from 'react-dom/client'; // ✅ Импортируем createRoot
-import AppHeader from "./components/AppHeader";
-import SearchPanel from "./components/SearchPanel";
-import TodoList from "./components/TodoList";
-import ItemStatusFilter from "./components/ItemStatusFilter";
+import ReactDOM from 'react-dom/client';
+import AppHeader from "./components/app-header/AppHeader";
+import SearchPanel from "./components/search-panel/SearchPanel";
+import TodoList from "./components/todo-list/TodoList";
+import ItemStatusFilter from "./components/item-status-filter/ItemStatusFilter";
 import './index.css';
 
 const todoData = [
