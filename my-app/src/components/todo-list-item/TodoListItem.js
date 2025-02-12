@@ -17,14 +17,14 @@ export default class TodoListItem extends Component {
             <span className={classNames}>
                 <span
                     className="todo-list-item-label"
-                    onClick={onToggleDone} // ✅ Теперь вызывает `onToggleDone`
+                    onClick={onToggleDone} // ✅ Теперь `done` управляется `App.js`
                 >
                     {label}
                 </span>
 
                 <button type="button"
                         className="btn btn-outline-success btn-sm float-right"
-                        onClick={onToggleImportant} // ✅ Теперь вызывает `onToggleImportant`
+                        onClick={onToggleImportant} // ✅ Теперь `important` управляется `App.js`
                 >
                     <i className="fa fa-exclamation" />
                 </button>
