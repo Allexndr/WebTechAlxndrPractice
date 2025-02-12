@@ -3,13 +3,14 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
     state = {
-        done: false // ✅ Теперь мы отслеживаем выполнение задачи
+        done: false // ✅ Теперь начальное состояние `done` = false
     };
 
     onLabelClick = () => {
-        this.setState(({ done }) => ({
-            done: !done // ✅ Переключаем значение `done` при клике
-        }));
+        console.log(`Done: ${this.props.label}`);
+        this.setState({
+            done: true // ✅ Теперь при клике всегда становится `done: true`
+        });
     };
 
     render() {
@@ -18,7 +19,7 @@ export default class TodoListItem extends Component {
 
         let classNames = 'todo-list-item';
         if (done) {
-            classNames += ' done'; // ✅ Если `done: true`, добавляем класс `done`
+            classNames += ' done'; // ✅ Добавляется класс "done"
         }
 
         const style = {
@@ -31,7 +32,7 @@ export default class TodoListItem extends Component {
                 <span
                     className="todo-list-item-label"
                     style={style}
-                    onClick={this.onLabelClick} // ✅ При клике изменяется `done`
+                    onClick={this.onLabelClick} // ✅ Теперь задача точно будет выполнена при клике
                 >
                     {label}
                 </span>
