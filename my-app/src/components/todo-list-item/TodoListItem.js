@@ -3,23 +3,32 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
     state = {
-        done: false // ✅ Теперь начальное состояние `done` = false
+        done: false,
+        important: false
     };
 
     onLabelClick = () => {
-        console.log(`Done: ${this.props.label}`);
-        this.setState({
-            done: true // ✅ Теперь при клике всегда становится `done: true`
-        });
+        this.setState(({ done }) => ({
+            done: !done // ✅ Теперь можно включать и выключать `done`
+        }));
+    };
+
+    onMarkImportant = () => {
+        this.setState(({ important }) => ({
+            important: !important // ✅ Теперь можно включать и выключать `important`
+        }));
     };
 
     render() {
-        const { label, important = false } = this.props;
-        const { done } = this.state;
+        const { label } = this.props;
+        const { done, important } = this.state;
 
         let classNames = 'todo-list-item';
         if (done) {
-            classNames += ' done'; // ✅ Добавляется класс "done"
+            classNames += ' done'; // ✅ Добавляем класс `done`
+        }
+        if (important) {
+            classNames += ' important'; // ✅ Добавляем класс `important`
         }
 
         const style = {
@@ -32,14 +41,20 @@ export default class TodoListItem extends Component {
                 <span
                     className="todo-list-item-label"
                     style={style}
-                    onClick={this.onLabelClick} // ✅ Теперь задача точно будет выполнена при клике
+                    onClick={this.onLabelClick} // ✅ Теперь кликаем, и задача отмечается выполненной
                 >
                     {label}
                 </span>
-                <button type="button" className="btn btn-outline-success btn-sm float-right">
+
+                <button type="button"
+                        className="btn btn-outline-success btn-sm float-right"
+                        onClick={this.onMarkImportant} // ✅ Кнопка "важное"
+                >
                     <i className="fa fa-exclamation" />
                 </button>
-                <button type="button" className="btn btn-outline-danger btn-sm float-right">
+
+                <button type="button"
+                        className="btn btn-outline-danger btn-sm float-right">
                     <i className="fa fa-trash-o" />
                 </button>
             </span>
