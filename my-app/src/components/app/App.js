@@ -8,24 +8,20 @@ import ItemAddForm from "../item-add-form/ItemAddForm";
 import './app.css';
 
 export default class App extends Component {
-    maxId = 100; // ✅ Счётчик для генерации уникальных ID
+    maxId = 100; // ✅ Генерация уникального ID
 
     state = {
         todoData: [
-            { label: 'Drink Coffee', important: false, id: 1 },
-            { label: 'Make Awesome App', important: true, id: 2 },
-            { label: 'Have a lunch', important: false, id: 3 }
+            { label: 'Drink Coffee', important: false, done: false, id: 1 },
+            { label: 'Make Awesome App', important: true, done: false, id: 2 },
+            { label: 'Have a lunch', important: false, done: false, id: 3 }
         ]
     };
 
     deleteItem = (id) => {
         this.setState(({ todoData }) => {
-            const idx = todoData.findIndex((element) => element.id === id);
-            const newArray = [...todoData.slice(0, idx), ...todoData.slice(idx + 1)];
-
-            return {
-                todoData: newArray
-            };
+            const newArray = todoData.filter(item => item.id !== id);
+            return { todoData: newArray };
         });
     };
 
@@ -33,16 +29,29 @@ export default class App extends Component {
         const newItem = {
             label: text,
             important: false,
-            id: this.maxId++ // ✅ Генерируем уникальный `id`
+            done: false,
+            id: this.maxId++
         };
 
-        this.setState(({ todoData }) => {
-            const newArr = [...todoData, newItem];
+        this.setState(({ todoData }) => ({
+            todoData: [...todoData, newItem]
+        }));
+    };
 
-            return {
-                todoData: newArr
-            };
-        });
+    onToggleImportant = (id) => {
+        this.setState(({ todoData }) => ({
+            todoData: todoData.map(item =>
+                item.id === id ? { ...item, important: !item.important } : item
+            )
+        }));
+    };
+
+    onToggleDone = (id) => {
+        this.setState(({ todoData }) => ({
+            todoData: todoData.map(item =>
+                item.id === id ? { ...item, done: !item.done } : item
+            )
+        }));
     };
 
     render() {
@@ -54,8 +63,13 @@ export default class App extends Component {
                     <ItemStatusFilter />
                 </div>
 
-                <TodoList todos={this.state.todoData} onDeleted={this.deleteItem} />
-                <ItemAddForm onItemAdded={this.addItem} /> {/* ✅ Теперь кнопка передаёт `onItemAdded` */}
+                <TodoList
+                    todos={this.state.todoData}
+                    onDeleted={this.deleteItem}
+                    onToggleImportant={this.onToggleImportant}
+                    onToggleDone={this.onToggleDone}
+                />
+                <ItemAddForm onItemAdded={this.addItem} />
             </div>
         );
     }
