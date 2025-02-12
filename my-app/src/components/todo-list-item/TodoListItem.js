@@ -9,26 +9,26 @@ export default class TodoListItem extends Component {
 
     onLabelClick = () => {
         this.setState(({ done }) => ({
-            done: !done // ✅ Теперь можно включать и выключать `done`
+            done: !done
         }));
     };
 
     onMarkImportant = () => {
         this.setState(({ important }) => ({
-            important: !important // ✅ Теперь можно включать и выключать `important`
+            important: !important
         }));
     };
 
     render() {
-        const { label } = this.props;
+        const { label, onDeleted } = this.props;
         const { done, important } = this.state;
 
         let classNames = 'todo-list-item';
         if (done) {
-            classNames += ' done'; // ✅ Добавляется класс "done"
+            classNames += ' done';
         }
         if (important) {
-            classNames += ' important'; // ✅ Добавляется класс "important"
+            classNames += ' important';
         }
 
         const style = {
@@ -41,20 +41,22 @@ export default class TodoListItem extends Component {
                 <span
                     className="todo-list-item-label"
                     style={style}
-                    onClick={this.onLabelClick} // ✅ Теперь задача отмечается/снимается
+                    onClick={this.onLabelClick}
                 >
                     {label}
                 </span>
 
                 <button type="button"
                         className="btn btn-outline-success btn-sm float-right"
-                        onClick={this.onMarkImportant} // ✅ Кнопка "важное"
+                        onClick={this.onMarkImportant}
                 >
                     <i className="fa fa-exclamation" />
                 </button>
 
                 <button type="button"
-                        className="btn btn-outline-danger btn-sm float-right">
+                        className="btn btn-outline-danger btn-sm float-right"
+                        onClick={onDeleted} // ✅ Теперь удаляет задачу
+                >
                     <i className="fa fa-trash-o" />
                 </button>
             </span>
