@@ -13,7 +13,9 @@
 }
 .todo-list-item.done .todo-list-item-label {
     text-decoration: line-through;
+    color: grey;
 }
+
 .todo-list-item.important .todo-list-item-label {
     font-weight: bold;
     color: steelblue;
