@@ -19,18 +19,18 @@ export default class App extends Component {
         this.setState(({ todoData }) => {
             const idx = todoData.findIndex((element) => element.id === id);
 
-            // Разбиваем массив на две части: до удалённого элемента и после
-            const before = todoData.slice(0, idx);
-            const after = todoData.slice(idx + 1);
-
-            // Объединяем массив без удалённого элемента
-            const newArray = [...before, ...after];
+            // ✅ Теперь newArray создаётся сразу без `before` и `after`
+            const newArray = [
+                ...todoData.slice(0, idx),
+                ...todoData.slice(idx + 1)
+            ];
 
             return {
                 todoData: newArray
             };
         });
     };
+
 
     render() {
         return (
