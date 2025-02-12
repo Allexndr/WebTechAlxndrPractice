@@ -25,10 +25,10 @@ export default class TodoListItem extends Component {
 
         let classNames = 'todo-list-item';
         if (done) {
-            classNames += ' done'; // ✅ Добавляем класс `done`
+            classNames += ' done'; // ✅ Добавляется класс "done"
         }
         if (important) {
-            classNames += ' important'; // ✅ Добавляем класс `important`
+            classNames += ' important'; // ✅ Добавляется класс "important"
         }
 
         const style = {
@@ -41,7 +41,7 @@ export default class TodoListItem extends Component {
                 <span
                     className="todo-list-item-label"
                     style={style}
-                    onClick={this.onLabelClick} // ✅ Теперь кликаем, и задача отмечается выполненной
+                    onClick={this.onLabelClick} // ✅ Теперь задача отмечается/снимается
                 >
                     {label}
                 </span>
