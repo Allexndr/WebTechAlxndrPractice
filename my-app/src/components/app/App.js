@@ -3,6 +3,7 @@ import AppHeader from '../app-header/AppHeader';
 import SearchPanel from '../search-panel/SearchPanel';
 import TodoList from '../todo-list/TodoList';
 import ItemStatusFilter from '../item-status-filter/ItemStatusFilter';
+import ItemAddForm from "../item-add-form/ItemAddForm";
 
 import './app.css';
 
@@ -19,7 +20,6 @@ export default class App extends Component {
         this.setState(({ todoData }) => {
             const idx = todoData.findIndex((element) => element.id === id);
 
-            // ✅ Теперь newArray создаётся сразу без `before` и `after`
             const newArray = [
                 ...todoData.slice(0, idx),
                 ...todoData.slice(idx + 1)
@@ -31,7 +31,6 @@ export default class App extends Component {
         });
     };
 
-
     render() {
         return (
             <div className="todo-app">
@@ -42,6 +41,7 @@ export default class App extends Component {
                 </div>
 
                 <TodoList todos={this.state.todoData} onDeleted={this.deleteItem} />
+                <ItemAddForm /> {/* ✅ Добавлена кнопка "Add Item" */}
             </div>
         );
     }
