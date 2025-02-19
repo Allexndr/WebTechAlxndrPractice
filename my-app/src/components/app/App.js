@@ -19,6 +19,20 @@ export default class App extends Component {
         term: '',
         filter: 'all' // ✅ Хранит текущий выбранный фильтр
     };
+    onToggleImportant = (id) => {
+        this.setState(({ todoData }) => ({
+            todoData: todoData.map(item =>
+                item.id === id ? { ...item, important: !item.important } : item
+            )
+        }));
+    };
+    onToggleDone = (id) => {
+        this.setState(({ todoData }) => ({
+            todoData: todoData.map(item =>
+                item.id === id ? { ...item, done: !item.done } : item
+            )
+        }));
+    };
 
     createTodoItem(label) {
         return {
@@ -88,13 +102,13 @@ export default class App extends Component {
                     <SearchPanel onSearchChange={this.onSearchChange} />
                     <ItemStatusFilter filter={filter} onFilterChange={this.onFilterChange} /> {/* ✅ Передаём фильтр */}
                 </div>
-
                 <TodoList
-                    todos={visibleItems} // ✅ Передаём отфильтрованный список
+                    todos={visibleItems}
                     onDeleted={this.deleteItem}
-                    onToggleImportant={this.onToggleImportant}
+                    onToggleImportant={this.onToggleImportant} // ✅ Должно передаваться сюда
                     onToggleDone={this.onToggleDone}
                 />
+
                 <ItemAddForm onItemAdded={this.addItem} />
             </div>
         );
